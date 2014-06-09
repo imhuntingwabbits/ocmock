@@ -3,4 +3,4 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "OCMock.h"
+#import <OCMock/OCMock.h>

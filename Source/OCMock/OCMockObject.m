@@ -92,8 +92,8 @@
 	stubs = [[NSMutableArray alloc] init];
 	expectations = [[NSMutableArray alloc] init];
 	exceptions = [[NSMutableArray alloc] init];
-    invocations = [[NSMutableArray alloc] init];
-    return self;
+  invocations = [[NSMutableArray alloc] init];
+  return self;
 }
 
 - (void)dealloc
@@ -101,7 +101,7 @@
 	[stubs release];
 	[expectations release];
 	[exceptions release];
-    [invocations release];
+  [invocations release];
 	[super dealloc];
 }
 

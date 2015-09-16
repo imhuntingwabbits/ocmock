@@ -22,13 +22,6 @@
 //	Helper classes and protocols for testing
 // --------------------------------------------------------------------------------------
 
-
-
-@interface TestClass : NSObject
-+ (TestClass *)sharedInstance;
-- (void)someMethod;
-@end
-
 @interface OCMBoxedReturnValueProvider (Private)
 - (BOOL)isMethodReturnType:(const char *)returnType compatibleWithValueType:(const char *)valueType;
 @end
@@ -949,64 +942,24 @@ static NSString *TestNotification = @"TestNotification";
     XCTAssertEqual(2, count, @"Should have evaluated constraint only twice");
 }
 
-- (void)testClassMethods {
-  id classMockTestClass = [OCMockObject mockForClass:[TestClass class]];
-  [[[classMockTestClass expect] andReturn:classMockTestClass] alloc];
-  (void)[[classMockTestClass expect] init];
-  
-  TestClass *obj = [[TestClass alloc] init];
-  XCTAssertEqual(classMockTestClass, obj);
-  [classMockTestClass verify]; [classMockTestClass stopMocking];
-}
-
-- (void)testSimpleClassMethodOverride {
-  id classMockTestClass = [OCMockObject mockForClass:[TestClass class]];
-  id mockTestClass = [OCMockObject mockForClass:[TestClass class]];
-  [[[classMockTestClass expect] andReturn:mockTestClass] description];
-  
-  TestClass *obj = [TestClass sharedInstance];
-  XCTAssertEqual(mockTestClass, obj);
-  [mockTestClass verify];
-  [classMockTestClass verify]; [classMockTestClass stopMocking];
-}
-
 - (void)testInstanceMethodException {
-  id aMock = [OCMockObject mockForClass:[TestClass class]];
+  id aMock = [OCMockObject mockForClass:[TestClassWithProperty class]];
   
   NSException *ex = [NSException exceptionWithName:@"Test"
                                             reason:@"Test"
                                           userInfo:nil];
-  [[[aMock stub] andThrow:ex] someMethod];
+  [[[aMock stub] andThrow:ex] title];
   
-  XCTAssertThrows([aMock someMethod]);
+  BOOL threw = NO;
+  @try {
+    [aMock title];
+  } @catch(NSException *exception) {
+    threw = YES;
+    XCTAssertEqualObjects(ex, exception);
+  }
+  XCTAssertTrue(threw);
   [aMock verify];
 }
 
-- (void)testClassMethodException {
-  id aMock = [OCMockObject mockForClass:[TestClass class]];
-  
-  NSException *ex = [NSException exceptionWithName:@"Test"
-                                            reason:@"Test"
-                                          userInfo:nil];
-  [[[aMock stub] andThrow:ex] sharedInstance];
-  
-  XCTAssertThrows([aMock sharedInstance]);
-  [aMock verify];
-}
-
-
 @end
-
-@implementation TestClass
-
-+ (TestClass *)sharedInstance {
-  return nil;
-}
-
-- (void)someMethod {
-  
-}
-
-@end
-
 

@@ -30,7 +30,7 @@
 	NSMutableArray	*stubs;
 	NSMutableArray	*expectations;
 	NSMutableArray	*exceptions;
-    NSMutableArray  *invocations;
+  NSMutableArray  *invocations;
 }
 
 + (id)mockForClass:(Class)aClass;

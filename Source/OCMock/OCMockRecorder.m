@@ -17,6 +17,7 @@
 #import "OCMBlockCaller.h"
 #import "OCMRealObjectForwarder.h"
 #import "NSInvocation+OCMAdditions.h"
+#import "NSMethodSignature+OCMAdditions.h"
 
 @interface NSObject(HCMatcherDummy)
 - (BOOL)matches:(id)item;
@@ -142,6 +143,8 @@
         {
             [self classMethod];
             signature = [self methodSignatureForSelector:aSelector];
+        } else {
+          signature = [NSMethodSignature signatureForDynamicPropertyMatchingSelector:aSelector inClass:[signatureResolver mockedClass]];
         }
     }
     return signature;

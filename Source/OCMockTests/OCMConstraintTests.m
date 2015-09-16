@@ -17,25 +17,25 @@
 {
 	OCMConstraint *constraint = [OCMAnyConstraint constraint];
 	
-	STAssertTrue([constraint evaluate:@"foo"], @"Should have accepted a value.");
-	STAssertTrue([constraint evaluate:@"foo"], @"Should have accepted another value.");
-	STAssertTrue([constraint evaluate:@"foo"], @"Should have accepted nil.");	
+	XCTAssertTrue([constraint evaluate:@"foo"], @"Should have accepted a value.");
+	XCTAssertTrue([constraint evaluate:@"foo"], @"Should have accepted another value.");
+	XCTAssertTrue([constraint evaluate:@"foo"], @"Should have accepted nil.");	
 }
 
 - (void)testIsNilAcceptsOnlyNil
 {
 	OCMConstraint *constraint = [OCMIsNilConstraint constraint];
 	
-	STAssertFalse([constraint evaluate:@"foo"], @"Should not have accepted a value.");
-	STAssertTrue([constraint evaluate:nil], @"Should have accepted nil.");	
+	XCTAssertFalse([constraint evaluate:@"foo"], @"Should not have accepted a value.");
+	XCTAssertTrue([constraint evaluate:nil], @"Should have accepted nil.");	
 }
 
 - (void)testIsNotNilAcceptsAnythingButNil
 {
 	OCMConstraint *constraint = [OCMIsNotNilConstraint constraint];
 	
-	STAssertTrue([constraint evaluate:@"foo"], @"Should have accepted a value.");
-	STAssertFalse([constraint evaluate:nil], @"Should not have accepted nil.");	
+	XCTAssertTrue([constraint evaluate:@"foo"], @"Should have accepted a value.");
+	XCTAssertFalse([constraint evaluate:nil], @"Should not have accepted nil.");	
 }
 
 - (void)testNotEqualAcceptsAnythingButValue
@@ -43,9 +43,9 @@
 	OCMIsNotEqualConstraint *constraint = [OCMIsNotEqualConstraint constraint];
 	constraint->testValue = @"foo";
 	
-	STAssertFalse([constraint evaluate:@"foo"], @"Should not have accepted value.");
-	STAssertTrue([constraint evaluate:@"bar"], @"Should have accepted other value.");	
-	STAssertTrue([constraint evaluate:nil], @"Should have accepted nil.");	
+	XCTAssertFalse([constraint evaluate:@"foo"], @"Should not have accepted value.");
+	XCTAssertTrue([constraint evaluate:@"bar"], @"Should have accepted other value.");	
+	XCTAssertTrue([constraint evaluate:nil], @"Should have accepted nil.");	
 }
 
 
@@ -59,9 +59,9 @@
 {
 	OCMConstraint *constraint = CONSTRAINT(@selector(checkArg:));
 
-	STAssertTrue([constraint evaluate:@"foo"], @"Should have accepted foo.");
-	STAssertTrue(didCallCustomConstraint, @"Should have used custom method.");
-	STAssertFalse([constraint evaluate:@"bar"], @"Should not have accepted bar.");
+	XCTAssertTrue([constraint evaluate:@"foo"], @"Should have accepted foo.");
+	XCTAssertTrue(didCallCustomConstraint, @"Should have used custom method.");
+	XCTAssertFalse([constraint evaluate:@"bar"], @"Should not have accepted bar.");
 }
 
 
@@ -75,22 +75,22 @@
 {
 	OCMConstraint *constraint = CONSTRAINTV(@selector(checkArg:withValue:), @"foo");
 
-	STAssertTrue([constraint evaluate:@"foo"], @"Should have accepted foo.");
-	STAssertTrue(didCallCustomConstraint, @"Should have used custom method.");
-	STAssertFalse([constraint evaluate:@"bar"], @"Should not have accepted bar.");
+	XCTAssertTrue([constraint evaluate:@"foo"], @"Should have accepted foo.");
+	XCTAssertTrue(didCallCustomConstraint, @"Should have used custom method.");
+	XCTAssertFalse([constraint evaluate:@"bar"], @"Should not have accepted bar.");
 }
 
 
 - (void)testRaisesExceptionWhenConstraintMethodDoesNotTakeArgument
 {
-	STAssertThrows(CONSTRAINTV(@selector(checkArg:), @"bar"), @"Should have thrown for invalid constraint method.");
+	XCTAssertThrows(CONSTRAINTV(@selector(checkArg:), @"bar"), @"Should have thrown for invalid constraint method.");
 }
 
 
 - (void)testRaisesExceptionOnUnknownSelector
 {
     // We use a selector that this test does not implement
-	STAssertThrows(CONSTRAINTV(@selector(arrayWithArray:), @"bar"), @"Should have thrown for unknown constraint method.");
+	XCTAssertThrows(CONSTRAINTV(@selector(arrayWithArray:), @"bar"), @"Should have thrown for unknown constraint method.");
 }
 
 
@@ -105,8 +105,8 @@
 	
 	OCMBlockConstraint *constraint = [[[OCMBlockConstraint alloc] initWithConstraintBlock:checkForFooBlock] autorelease];
 
-	STAssertTrue([constraint evaluate:@"foo"], @"Should have accepted foo.");
-	STAssertFalse([constraint evaluate:@"bar"], @"Should not have accepted bar.");
+	XCTAssertTrue([constraint evaluate:@"foo"], @"Should have accepted foo.");
+	XCTAssertFalse([constraint evaluate:@"bar"], @"Should not have accepted bar.");
 }
 
 -(void)testBlockConstraintCanCaptureArgument 
@@ -121,9 +121,9 @@
 	OCMBlockConstraint *constraint = [[[OCMBlockConstraint alloc] initWithConstraintBlock:captureArgBlock] autorelease];
 
 	[constraint evaluate:@"foo"];
-	STAssertEqualObjects(@"foo", captured, @"Should have captured value from last invocation.");
+	XCTAssertEqualObjects(@"foo", captured, @"Should have captured value from last invocation.");
 	[constraint evaluate:@"bar"];
-	STAssertEqualObjects(@"bar", captured, @"Should have captured value from last invocation.");
+	XCTAssertEqualObjects(@"bar", captured, @"Should have captured value from last invocation.");
 }
 
 #endif

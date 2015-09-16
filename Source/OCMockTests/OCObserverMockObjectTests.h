@@ -3,10 +3,10 @@
 //  Copyright (c) 2009 by Mulle Kybernetik. See License file for details.
 //---------------------------------------------------------------------------------------
 
-#import <SenTestingKit/SenTestingKit.h>
+#import <XCTest/XCTest.h>
 
 
-@interface OCObserverMockObjectTest : SenTestCase 
+@interface OCObserverMockObjectTest : XCTestCase 
 {
 	NSNotificationCenter *center;
 	

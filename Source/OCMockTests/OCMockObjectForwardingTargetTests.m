@@ -126,7 +126,7 @@
     InternalObject *internal = [[InternalObject alloc] init];
     internal.name = @"Internal Object";
     PublicObject *public = [[PublicObject alloc] initWithInternal:internal];
-    STAssertEqualObjects(@"Internal Object", public.name, nil);
+    XCTAssertEqualObjects(@"Internal Object", public.name);
 }
 
 - (void)testStubsMethodImplementation
@@ -135,7 +135,7 @@
     id mock = [OCMockObject partialMockForObject:public];
 
     [[[mock stub] andReturn:@"FOO"] name];
-    STAssertEqualObjects(@"FOO", [mock name], nil);
+    XCTAssertEqualObjects(@"FOO", [mock name]);
 }
 
 @end

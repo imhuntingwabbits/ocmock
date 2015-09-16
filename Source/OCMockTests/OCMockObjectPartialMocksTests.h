@@ -3,9 +3,9 @@
 //  Copyright (c) 2013 by Mulle Kybernetik. See License file for details.
 //---------------------------------------------------------------------------------------
 
-#import <SenTestingKit/SenTestingKit.h>
+#import <XCTest/XCTest.h>
 
-@interface OCMockObjectPartialMocksTests : SenTestCase
+@interface OCMockObjectPartialMocksTests : XCTestCase
 {
     int numKVOCallbacks;
 }

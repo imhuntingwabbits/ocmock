@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		01BBD18F1BA95F65009ECCD9 /* OCMockObjectDynamicPropertyMockingTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 01BBD18E1BA95F65009ECCD9 /* OCMockObjectDynamicPropertyMockingTests.m */; settings = {ASSET_TAGS = (); }; };
+		01BBD1901BA95F65009ECCD9 /* OCMockObjectDynamicPropertyMockingTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 01BBD18E1BA95F65009ECCD9 /* OCMockObjectDynamicPropertyMockingTests.m */; settings = {ASSET_TAGS = (); }; };
 		030EF0B614632FD000B04273 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 030EF0B414632FD000B04273 /* InfoPlist.strings */; };
 		030EF0C214632FD000B04273 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 030EF0C114632FD000B04273 /* SenTestingKit.framework */; };
 		030EF0C614632FD000B04273 /* OCMock.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 030EF0A814632FD000B04273 /* OCMock.framework */; };
@@ -123,7 +125,6 @@
 		2FA287ACE547BB41937BDEC3 /* NSObject+OCMAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = 2FA28C5F4A475BEC0C28BDC3 /* NSObject+OCMAdditions.h */; };
 		2FA28896D9AFD309D59C9CFB /* OCMArgTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FA28EDBF243639C57F88A1B /* OCMArgTests.m */; };
 		2FA28D38ED9D83A3E0A620B3 /* NSObject+OCMAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FA28991BEFD67DEF2CCF7D2 /* NSObject+OCMAdditions.m */; };
-		D31108B01828DB8700737925 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D31108AF1828DB8700737925 /* SenTestingKit.framework */; };
 		D31108B21828DB8700737925 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D31108B11828DB8700737925 /* Foundation.framework */; };
 		D31108B41828DB8700737925 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D31108B31828DB8700737925 /* UIKit.framework */; };
 		D31108BA1828DB8700737925 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D31108B81828DB8700737925 /* InfoPlist.strings */; };
@@ -157,6 +158,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		01BBD18E1BA95F65009ECCD9 /* OCMockObjectDynamicPropertyMockingTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OCMockObjectDynamicPropertyMockingTests.m; sourceTree = "<group>"; };
 		030EF0A814632FD000B04273 /* OCMock.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = OCMock.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		030EF0B314632FD000B04273 /* OCMock-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "OCMock-Info.plist"; sourceTree = "<group>"; };
 		030EF0B514632FD000B04273 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -241,8 +243,7 @@
 		2FA28CDB493350BF1DD26DC3 /* OCMockObjectProtocolMocksTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCMockObjectProtocolMocksTests.h; sourceTree = "<group>"; };
 		2FA28DEDB9163597B7C49F3D /* NSMethodSignatureOCMAdditionsTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSMethodSignatureOCMAdditionsTests.m; sourceTree = "<group>"; };
 		2FA28EDBF243639C57F88A1B /* OCMArgTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OCMArgTests.m; sourceTree = "<group>"; };
-		D31108AD1828DB8700737925 /* OCMockLibTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OCMockLibTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
-		D31108AF1828DB8700737925 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
+		D31108AD1828DB8700737925 /* OCMockLibTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OCMockLibTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D31108B11828DB8700737925 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		D31108B31828DB8700737925 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
 		D31108B71828DB8700737925 /* OCMockLibTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "OCMockLibTests-Info.plist"; sourceTree = "<group>"; };
@@ -285,7 +286,6 @@
 			files = (
 				D31108CD1828DC1900737925 /* CoreGraphics.framework in Frameworks */,
 				D31108CB1828DC1300737925 /* libOCMock.a in Frameworks */,
-				D31108B01828DB8700737925 /* SenTestingKit.framework in Frameworks */,
 				D31108B41828DB8700737925 /* UIKit.framework in Frameworks */,
 				D31108B21828DB8700737925 /* Foundation.framework in Frameworks */,
 			);
@@ -313,7 +313,7 @@
 				030EF0A814632FD000B04273 /* OCMock.framework */,
 				030EF0C014632FD000B04273 /* OCMockTests.octest */,
 				030EF0DC14632FF700B04273 /* libOCMock.a */,
-				D31108AD1828DB8700737925 /* OCMockLibTests.octest */,
+				D31108AD1828DB8700737925 /* OCMockLibTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -382,6 +382,7 @@
 				2FA2843EE4675FC8037F0415 /* OCMArgTests.h */,
 				2FA28DEDB9163597B7C49F3D /* NSMethodSignatureOCMAdditionsTests.m */,
 				2FA28B7B2155E3ECD93F92F3 /* NSMethodSignatureOCMAdditionsTests.h */,
+				01BBD18E1BA95F65009ECCD9 /* OCMockObjectDynamicPropertyMockingTests.m */,
 			);
 			path = OCMockTests;
 			sourceTree = "<group>";
@@ -527,7 +528,6 @@
 			isa = PBXGroup;
 			children = (
 				D31108CC1828DC1900737925 /* CoreGraphics.framework */,
-				D31108AF1828DB8700737925 /* SenTestingKit.framework */,
 				D31108B11828DB8700737925 /* Foundation.framework */,
 				D31108B31828DB8700737925 /* UIKit.framework */,
 			);
@@ -662,7 +662,7 @@
 			name = OCMockTests;
 			productName = OCMockTests;
 			productReference = 030EF0C014632FD000B04273 /* OCMockTests.octest */;
-			productType = "com.apple.product-type.bundle";
+			productType = "com.apple.product-type.bundle.ocunit-test";
 		};
 		030EF0DB14632FF700B04273 /* OCMockLib */ = {
 			isa = PBXNativeTarget;
@@ -696,8 +696,8 @@
 			);
 			name = OCMockLibTests;
 			productName = OCMockLibTests;
-			productReference = D31108AD1828DB8700737925 /* OCMockLibTests.octest */;
-			productType = "com.apple.product-type.bundle";
+			productReference = D31108AD1828DB8700737925 /* OCMockLibTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
 
@@ -705,7 +705,8 @@
 		030EF09E14632FD000B04273 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0500;
+				LastTestingUpgradeCheck = 0700;
+				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = "Mulle Kybernetik";
 				TargetAttributes = {
 					D31108AC1828DB8700737925 = {
@@ -829,6 +830,7 @@
 				03B3163C1463350E0052CD09 /* OCMockObjectTests.m in Sources */,
 				03B316411463350E0052CD09 /* OCMockRecorderTests.m in Sources */,
 				03B316461463350E0052CD09 /* OCObserverMockObjectTests.m in Sources */,
+				01BBD18F1BA95F65009ECCD9 /* OCMockObjectDynamicPropertyMockingTests.m in Sources */,
 				03AC5C1516DF9FA500D82ECD /* OCMockObjectPartialMocksTests.m in Sources */,
 				039F91C616EFB493006C3D70 /* OCMockObjectClassMethodMockingTests.m in Sources */,
 				0354D72016F23AF5001766BB /* OCMockObjectForwardingTargetTests.m in Sources */,
@@ -877,6 +879,7 @@
 				D31108C41828DBD600737925 /* OCMockObjectPartialMocksTests.m in Sources */,
 				D31108C81828DBD600737925 /* OCMockRecorderTests.m in Sources */,
 				D31108C61828DBD600737925 /* OCMockObjectForwardingTargetTests.m in Sources */,
+				01BBD1901BA95F65009ECCD9 /* OCMockObjectDynamicPropertyMockingTests.m in Sources */,
 				D31108CA1828DBD600737925 /* NSInvocationOCMAdditionsTests.m in Sources */,
 				D31108C31828DBD600737925 /* OCMockObjectTests.m in Sources */,
 			);
@@ -935,11 +938,15 @@
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
@@ -955,6 +962,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.6;
+				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = macosx;
 			};
 			name = Debug;
@@ -969,11 +977,14 @@
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
@@ -1002,6 +1013,7 @@
 					"$(inherited)",
 					"\"$(SYSTEM_LIBRARY_DIR)/Frameworks/Foundation.framework/Versions/C\"",
 				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.mulle-kybernetik.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = framework;
 			};
@@ -1022,6 +1034,7 @@
 					"$(inherited)",
 					"\"$(SYSTEM_LIBRARY_DIR)/Frameworks/Foundation.framework/Versions/C\"",
 				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.mulle-kybernetik.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = framework;
 			};
@@ -1045,6 +1058,7 @@
 					"\"${TARGET_BUILD_DIR}/Frameworks\"",
 					"\"$(SYSTEM_LIBRARY_DIR)/Frameworks/Foundation.framework/Versions/C\"",
 				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.mulle-kybernetik.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = octest;
 			};
@@ -1068,6 +1082,7 @@
 					"${TARGET_BUILD_DIR}/Frameworks",
 					"\"$(SYSTEM_LIBRARY_DIR)/Frameworks/Foundation.framework/Versions/C\"",
 				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.mulle-kybernetik.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = octest;
 			};
@@ -1076,7 +1091,6 @@
 		030EF0E614632FF700B04273 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				DSTROOT = /tmp/OCMockLib.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "OCMockLib/OCMockLib-Prefix.pch";
@@ -1099,7 +1113,6 @@
 		030EF0E714632FF700B04273 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				DSTROOT = /tmp/OCMockLib.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "OCMockLib/OCMockLib-Prefix.pch";
@@ -1148,9 +1161,9 @@
 				INFOPLIST_FILE = "OCMockLibTests/OCMockLibTests-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.ocmock.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
-				WRAPPER_EXTENSION = octest;
 			};
 			name = Debug;
 		};
@@ -1179,10 +1192,10 @@
 				INFOPLIST_FILE = "OCMockLibTests/OCMockLibTests-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.ocmock.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
-				WRAPPER_EXTENSION = octest;
 			};
 			name = Release;
 		};

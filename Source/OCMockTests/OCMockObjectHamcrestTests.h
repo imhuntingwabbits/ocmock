@@ -3,10 +3,10 @@
 //  Copyright (c) 2004-2008 by Mulle Kybernetik. See License file for details.
 //---------------------------------------------------------------------------------------
 
-#import <SenTestingKit/SenTestingKit.h>
+#import <XCTest/XCTest.h>
 
 
-@interface OCMockObjectHamcrestTests : SenTestCase 
+@interface OCMockObjectHamcrestTests : XCTestCase 
 {
 }
 

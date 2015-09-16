@@ -30,7 +30,7 @@ class Builder
     end
     
     def downloadSource
-        @worker.run("git archive master | tar -x -v -C #{@env.sourcedir}")
+        @worker.run("git archive issue-218-thread-safe | tar -x -v -C #{@env.sourcedir}")
     end
 
     def copySource

@@ -163,7 +163,11 @@ static NSMutableDictionary *mockTable;
 
 - (NSMethodSignature *)methodSignatureForSelector:(SEL)aSelector
 {
-	return [mockedClass instanceMethodSignatureForSelector:aSelector];
+  NSMethodSignature *signature = [mockedClass instanceMethodSignatureForSelector:aSelector];
+  if (signature == nil) {
+    signature = [NSMethodSignature signatureForDynamicPropertyMatchingSelector:aSelector inClass:mockedClass];
+  }
+  return signature;
 }
 
 - (Class)mockObjectClass

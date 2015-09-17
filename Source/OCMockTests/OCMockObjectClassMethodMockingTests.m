@@ -316,6 +316,12 @@ static NSUInteger initializeCallCount = 0;
     id newObject = [TestClassWithClassMethods new];
 
     XCTAssertEqualObjects(dummyObject, newObject, @"Should have stubbed +new method");
+  
+    [[[mock stub] andReturn:mock] alloc];
+    (void)[[[mock expect] andReturn:mock] init];
+    
+    newObject = [[TestClassWithClassMethods alloc] init];
+    XCTAssertEqualObjects(mock, newObject);
 }
 
 - (void)testClassMethodException {

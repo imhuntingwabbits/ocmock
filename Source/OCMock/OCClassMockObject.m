@@ -20,6 +20,7 @@
 #import "OCMFunctions.h"
 #import "OCMInvocationStub.h"
 #import "NSMethodSignature+OCMAdditions.h"
+#import "OCMExceptionReturnValueProvider.h"
 
 @implementation OCClassMockObject
 
@@ -150,16 +151,24 @@
 
 - (void)forwardInvocationForClassObject:(NSInvocation *)anInvocation
 {
-	// in here "self" is a reference to the real class, not the mock
-	OCClassMockObject *mock = OCMGetAssociatedMockForClass((Class) self, YES);
-    if(mock == nil)
-    {
-        [NSException raise:NSInternalInconsistencyException format:@"No mock for class %@", NSStringFromClass((Class)self)];
-    }
-	if([mock handleInvocation:anInvocation] == NO)
-    {
-        [anInvocation setSelector:OCMAliasForOriginalSelector([anInvocation selector])];
-        [anInvocation invoke];
+    @try {
+        // in here "self" is a reference to the real class, not the mock
+        OCClassMockObject *mock = OCMGetAssociatedMockForClass((Class) self, YES);
+        if(mock == nil)
+        {
+            [NSException raise:NSInternalInconsistencyException format:@"No mock for class %@", NSStringFromClass((Class)self)];
+        }
+        if([mock handleInvocation:anInvocation] == NO)
+        {
+            [anInvocation setSelector:OCMAliasForOriginalSelector([anInvocation selector])];
+            [anInvocation invoke];
+        }
+    } @catch (NSException *ex) {
+        if ([[ex name] isEqualToString:OCMExceptionReturnValueProviderExceptionName]) {
+            ex = [[ex userInfo] objectForKey:OCMExceptionReturnValueProviderUnderlyingExceptionKey];
+        }
+        
+        [ex raise];
     }
 }
 

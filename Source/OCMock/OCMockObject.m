@@ -28,7 +28,7 @@
 #import "OCMVerifier.h"
 #import "OCMInvocationExpectation.h"
 #import "OCMExpectationRecorder.h"
-
+#import "OCMExceptionReturnValueProvider.h"
 
 @implementation OCMockObject
 
@@ -284,9 +284,15 @@
     }
     @catch(NSException *e)
     {
-        @synchronized(exceptions)
+        if ([[e name] isEqualToString:OCMExceptionReturnValueProviderExceptionName])
         {
-            [exceptions addObject:e];
+            e = [[e userInfo] objectForKey:OCMExceptionReturnValueProviderUnderlyingExceptionKey];
+        } else
+        {
+            @synchronized(exceptions)
+            {
+                [exceptions addObject:e];
+            }
         }
         [e raise];
     }

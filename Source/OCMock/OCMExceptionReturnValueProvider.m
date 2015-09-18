@@ -16,12 +16,16 @@
 
 #import "OCMExceptionReturnValueProvider.h"
 
+NSString * const OCMExceptionReturnValueProviderExceptionName = @"OCMExceptionReturnValueProviderExceptionName";
+NSString * const OCMExceptionReturnValueProviderUnderlyingExceptionKey = @"OCMExceptionReturnValueProviderUnderlyingExceptionKey";
 
 @implementation OCMExceptionReturnValueProvider
 
 - (void)handleInvocation:(NSInvocation *)anInvocation
 {
-	@throw returnValue;
+	@throw [NSException exceptionWithName:OCMExceptionReturnValueProviderExceptionName
+                                   reason:nil
+                                 userInfo:@{ OCMExceptionReturnValueProviderUnderlyingExceptionKey: returnValue }];
 }
 
 @end

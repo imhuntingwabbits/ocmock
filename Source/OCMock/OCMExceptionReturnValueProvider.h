@@ -16,6 +16,9 @@
 
 #import "OCMReturnValueProvider.h"
 
+extern NSString * const OCMExceptionReturnValueProviderExceptionName;
+extern NSString * const OCMExceptionReturnValueProviderUnderlyingExceptionKey;
+
 @interface OCMExceptionReturnValueProvider : OCMReturnValueProvider 
 {
 }

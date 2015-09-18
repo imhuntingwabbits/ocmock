@@ -333,7 +333,7 @@ static NSUInteger initializeCallCount = 0;
   BOOL threw = NO;
   [[[classMock stub] andThrow:ex] foo];
   @try {
-    [classMock foo];
+    [TestClassWithClassMethods foo];
   } @catch(NSException *exception) {
     XCTAssertEqualObjects(ex, exception);
     threw = YES;

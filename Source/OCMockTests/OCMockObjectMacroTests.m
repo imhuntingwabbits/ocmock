@@ -16,6 +16,7 @@
 
 #import <XCTest/XCTest.h>
 #import <OCMock/OCMock.h>
+#import "OCMFunctions.h"
 
 
 @protocol TestProtocolForMacroTesting

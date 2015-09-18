@@ -109,6 +109,23 @@ static NSUInteger initializeCallCount = 0;
 
 @end
 
+@interface TestClassWithNestedProperty : NSObject
+@property(nonatomic, readonly) NSManagedObjectContext *simpleMethodInstance;
+
+@end
+
+@implementation TestClassWithNestedProperty
+
+- (instancetype)init {
+    if (self = [super init]) {
+        _simpleMethodInstance = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSPrivateQueueConcurrencyType];
+    }
+    
+    return self;
+}
+
+@end
+
 
 @interface NSObject(OCMCategoryForTesting)
 
@@ -410,6 +427,15 @@ static NSUInteger initializeCallCount = 0;
     [[[mock expect] andForwardToRealObject] method1];
     [[[mock expect] andForwardToRealObject] method2];
     XCTAssertNoThrow([object method1], @"Calling an expected method that internally calls another expected method should not make expectations appear to be out of order.");
+}
+
+- (void)testPartialMockOfRetainedObject {
+    TestClassWithNestedProperty *parentObj = [TestClassWithNestedProperty new];
+  NSManagedObjectContext *moc = parentObj.simpleMethodInstance;
+    id partialMock = [OCMockObject partialMockForObject:moc];
+    XCTAssertNotNil(partialMock);
+    
+    [partialMock verify]; [partialMock stopMocking];
 }
 
 

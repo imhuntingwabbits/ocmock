@@ -431,10 +431,8 @@ static NSUInteger initializeCallCount = 0;
 
 - (void)testPartialMockOfRetainedObject {
     TestClassWithNestedProperty *parentObj = [TestClassWithNestedProperty new];
-  NSManagedObjectContext *moc = parentObj.simpleMethodInstance;
-    id partialMock = [OCMockObject partialMockForObject:moc];
+    id partialMock = [OCMockObject partialMockForObject:parentObj.simpleMethodInstance];
     XCTAssertNotNil(partialMock);
-    
     [partialMock verify]; [partialMock stopMocking];
 }
 

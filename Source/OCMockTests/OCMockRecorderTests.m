@@ -40,12 +40,12 @@
 {
     NSString *arg = @"I love mocks.";
 
-    OCMockRecorder *recorder = [[[OCMockRecorder alloc] initWithSignatureResolver:[NSString string]] autorelease];
-	[(id)recorder initWithString:arg];
+    OCMockRecorder *recorder = [[OCMockRecorder alloc] initWithSignatureResolver:[NSString string]];
+	(void)[(id)recorder initWithString:arg];
 
     NSInvocation *testInvocation = [self invocationForTargetClass:[NSString class] selector:@selector(initWithString:)];
     [testInvocation setArgument:&arg atIndex:2];
-	STAssertTrue([recorder matchesInvocation:testInvocation], @"Should match.");
+	XCTAssertTrue([recorder matchesInvocation:testInvocation], @"Should match.");
 }
 
 
@@ -53,12 +53,12 @@
 {
     NSString *arg = @"I love mocks.";
 
-    OCMockRecorder *recorder = [[[OCMockRecorder alloc] initWithSignatureResolver:[NSString string]] autorelease];
-	[(id)recorder initWithString:@"whatever"];
+    OCMockRecorder *recorder = [[OCMockRecorder alloc] initWithSignatureResolver:[NSString string]];
+	(void)[(id)recorder initWithString:@"whatever"];
 
     NSInvocation *testInvocation = [self invocationForTargetClass:[NSString class] selector:@selector(initWithString:)];
     [testInvocation setArgument:&arg atIndex:2];
-	STAssertFalse([recorder matchesInvocation:testInvocation], @"Should not match.");
+	XCTAssertFalse([recorder matchesInvocation:testInvocation], @"Should not match.");
 }
 
 -(void)testSelectivelyIgnoresNonObjectArguments
@@ -66,14 +66,14 @@
     NSString *arg1 = @"I (.*) mocks.";
     NSUInteger arg2 = NSRegularExpressionSearch;
 
-    OCMockRecorder *recorder = [[[OCMockRecorder alloc] initWithSignatureResolver:[NSString string]] autorelease];
+    OCMockRecorder *recorder = [[OCMockRecorder alloc] initWithSignatureResolver:[NSString string]];
     [(id)recorder rangeOfString:[OCMArg any] options:0];
     [recorder ignoringNonObjectArgs];
 
     NSInvocation *testInvocation = [self invocationForTargetClass:[NSString class] selector:@selector(rangeOfString:options:)];
     [testInvocation setArgument:&arg1 atIndex:2];
     [testInvocation setArgument:&arg2 atIndex:3];
-    STAssertTrue([recorder matchesInvocation:testInvocation], @"Should match.");
+    XCTAssertTrue([recorder matchesInvocation:testInvocation], @"Should match.");
 }
 
 -(void)testSelectivelyIgnoresNonObjectArgumentsAndStillFailsWhenFollowingObjectArgsDontMatch
@@ -81,34 +81,34 @@
     int arg1 = 17;
     NSString *arg2 = @"foo";
 
-    OCMockRecorder *recorder = [[[OCMockRecorder alloc] initWithSignatureResolver:[[[TestClassForRecorder alloc] init] autorelease]] autorelease];
+    OCMockRecorder *recorder = [[OCMockRecorder alloc] initWithSignatureResolver:[[TestClassForRecorder alloc] init]];
     [(id)recorder methodWithInt:12 andObject:@"bar"];
     [recorder ignoringNonObjectArgs];
 
     NSInvocation *testInvocation = [self invocationForTargetClass:[TestClassForRecorder class] selector:@selector(methodWithInt:andObject:)];
     [testInvocation setArgument:&arg1 atIndex:2];
     [testInvocation setArgument:&arg2 atIndex:3];
-    STAssertFalse([recorder matchesInvocation:testInvocation], @"Should not match.");
+    XCTAssertFalse([recorder matchesInvocation:testInvocation], @"Should not match.");
 }
 
 - (void)testAddsReturnValueProvider
 {
-    OCMockRecorder *recorder = [[[OCMockRecorder alloc] initWithSignatureResolver:[NSString string]] autorelease];
+    OCMockRecorder *recorder = [[OCMockRecorder alloc] initWithSignatureResolver:[NSString string]];
 	[recorder andReturn:@"foo"];
     NSArray *handlerList = [recorder invocationHandlers];
 	
-	STAssertEquals((NSUInteger)1, [handlerList count], @"Should have added one handler.");
-	STAssertEqualObjects([OCMReturnValueProvider class], [[handlerList objectAtIndex:0] class], @"Should have added correct handler.");
+	XCTAssertEqual((NSUInteger)1, [handlerList count], @"Should have added one handler.");
+	XCTAssertEqualObjects([OCMReturnValueProvider class], [[handlerList objectAtIndex:0] class], @"Should have added correct handler.");
 }
 
 - (void)testAddsExceptionReturnValueProvider
 {
-    OCMockRecorder *recorder = [[[OCMockRecorder alloc] initWithSignatureResolver:[NSString string]] autorelease];
+    OCMockRecorder *recorder = [[OCMockRecorder alloc] initWithSignatureResolver:[NSString string]];
 	[recorder andThrow:[NSException exceptionWithName:@"TestException" reason:@"A reason" userInfo:nil]];
     NSArray *handlerList = [recorder invocationHandlers];
 
-	STAssertEquals((NSUInteger)1, [handlerList count], @"Should have added one handler.");
-	STAssertEqualObjects([OCMExceptionReturnValueProvider class], [[handlerList objectAtIndex:0] class], @"Should have added correct handler.");
+	XCTAssertEqual((NSUInteger)1, [handlerList count], @"Should have added one handler.");
+	XCTAssertEqualObjects([OCMExceptionReturnValueProvider class], [[handlerList objectAtIndex:0] class], @"Should have added correct handler.");
 	
 }
 

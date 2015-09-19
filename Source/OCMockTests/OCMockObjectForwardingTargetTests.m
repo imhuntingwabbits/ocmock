@@ -27,12 +27,6 @@
 
 @synthesize name = _name;
 
-- (void)dealloc
-{
-    [_name release];
-    [super dealloc];
-}
-
 @end
 
 
@@ -53,12 +47,6 @@
 - (instancetype)init
 {
     return [self initWithInternal:[[InternalObject alloc] init]];
-}
-
-- (void)dealloc
-{
-    [_internal release];
-    [super dealloc];
 }
 
 - (id)forwardingTargetForSelector:(SEL)selector
@@ -126,7 +114,7 @@
     InternalObject *internal = [[InternalObject alloc] init];
     internal.name = @"Internal Object";
     PublicObject *public = [[PublicObject alloc] initWithInternal:internal];
-    STAssertEqualObjects(@"Internal Object", public.name, nil);
+    XCTAssertEqualObjects(@"Internal Object", public.name);
 }
 
 - (void)testStubsMethodImplementation
@@ -135,7 +123,7 @@
     id mock = [OCMockObject partialMockForObject:public];
 
     [[[mock stub] andReturn:@"FOO"] name];
-    STAssertEqualObjects(@"FOO", [mock name], nil);
+    XCTAssertEqualObjects(@"FOO", [mock name]);
 }
 
 @end

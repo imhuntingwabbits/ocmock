@@ -24,7 +24,7 @@
 {
 	id mock = [OCMockObject mockForClass:[NSString class]];
 	[[mock stub] hasSuffix:(id)anyOf(equalTo(@"foo"), equalTo(@"bar"), NULL)];
-	STAssertThrows([mock hasSuffix:@"foobar"], @"Should have raised an exception.");
+	XCTAssertThrows([mock hasSuffix:@"foobar"], @"Should have raised an exception.");
 }
 
 

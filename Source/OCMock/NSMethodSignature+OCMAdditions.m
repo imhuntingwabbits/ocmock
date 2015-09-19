@@ -58,12 +58,12 @@
             }
         }
     }
-    
-    
+
+
     const char *propertyAttributesString = property_getAttributes(property);
     if(propertyAttributesString == NULL)
         return nil;
-    
+
     NSArray *propertyAttributes = [[NSString stringWithCString:propertyAttributesString
                                                       encoding:NSASCIIStringEncoding] componentsSeparatedByString:@","];
     NSString *typeStr = nil;
@@ -79,10 +79,10 @@
             typeStr = [attribute substringFromIndex:1];
         }
     }
-    
+
     if(!isDynamic)
         return nil;
-    
+
     NSRange r = [typeStr rangeOfString:@"\""];
     if(r.location != NSNotFound)
     {

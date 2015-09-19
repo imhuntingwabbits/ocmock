@@ -5,12 +5,6 @@
 
 #import <Foundation/Foundation.h>
 
-@interface NSMethodSignature(PrivateAPI)
-
-+ (id)signatureWithObjCTypes:(const char *)types;
-
-@end
-
 @interface NSMethodSignature(OCMAdditions)
 
 + (NSMethodSignature *)signatureForDynamicPropertyMatchingSelector:(SEL)selector inClass:(Class)aClass;

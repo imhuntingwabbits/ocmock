@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		011797401BACEFDC00E23FD1 /* OCMockObjectDynamicPropertyMockingTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0117973F1BACEFDC00E23FD1 /* OCMockObjectDynamicPropertyMockingTests.m */; settings = {ASSET_TAGS = (); }; };
+		011797411BACEFDC00E23FD1 /* OCMockObjectDynamicPropertyMockingTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0117973F1BACEFDC00E23FD1 /* OCMockObjectDynamicPropertyMockingTests.m */; settings = {ASSET_TAGS = (); }; };
 		030EF0B614632FD000B04273 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 030EF0B414632FD000B04273 /* InfoPlist.strings */; };
 		030EF0C214632FD000B04273 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 030EF0C114632FD000B04273 /* SenTestingKit.framework */; };
 		030EF0C614632FD000B04273 /* OCMock.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 030EF0A814632FD000B04273 /* OCMock.framework */; };
@@ -156,6 +158,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0117973F1BACEFDC00E23FD1 /* OCMockObjectDynamicPropertyMockingTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OCMockObjectDynamicPropertyMockingTests.m; sourceTree = "<group>"; };
 		030EF0A814632FD000B04273 /* OCMock.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = OCMock.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		030EF0B314632FD000B04273 /* OCMock-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "OCMock-Info.plist"; sourceTree = "<group>"; };
 		030EF0B514632FD000B04273 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -353,32 +356,33 @@
 		030EF0C714632FD000B04273 /* OCMockTests */ = {
 			isa = PBXGroup;
 			children = (
-				03B316241463350E0052CD09 /* OCMockObjectTests.h */,
-				03B316251463350E0052CD09 /* OCMockObjectTests.m */,
-				03AC5C1316DF9FA500D82ECD /* OCMockObjectPartialMocksTests.h */,
-				03AC5C1416DF9FA500D82ECD /* OCMockObjectPartialMocksTests.m */,
+				030EF0AA14632FD000B04273 /* Frameworks */,
+				03B3161E1463350E0052CD09 /* NSInvocationOCMAdditionsTests.h */,
+				03B3161F1463350E0052CD09 /* NSInvocationOCMAdditionsTests.m */,
+				2FA28B7B2155E3ECD93F92F3 /* NSMethodSignatureOCMAdditionsTests.h */,
+				2FA28DEDB9163597B7C49F3D /* NSMethodSignatureOCMAdditionsTests.m */,
+				2FA2843EE4675FC8037F0415 /* OCMArgTests.h */,
+				2FA28EDBF243639C57F88A1B /* OCMArgTests.m */,
+				03B316201463350E0052CD09 /* OCMConstraintTests.h */,
+				03B316211463350E0052CD09 /* OCMConstraintTests.m */,
 				039F91C416EFB493006C3D70 /* OCMockObjectClassMethodMockingTests.h */,
 				039F91C516EFB493006C3D70 /* OCMockObjectClassMethodMockingTests.m */,
+				0117973F1BACEFDC00E23FD1 /* OCMockObjectDynamicPropertyMockingTests.m */,
 				0354D71E16F23AF5001766BB /* OCMockObjectForwardingTargetTests.h */,
 				0354D71F16F23AF5001766BB /* OCMockObjectForwardingTargetTests.m */,
 				03B316221463350E0052CD09 /* OCMockObjectHamcrestTests.h */,
 				03B316231463350E0052CD09 /* OCMockObjectHamcrestTests.mm */,
-				03B316201463350E0052CD09 /* OCMConstraintTests.h */,
-				03B316211463350E0052CD09 /* OCMConstraintTests.m */,
+				03AC5C1316DF9FA500D82ECD /* OCMockObjectPartialMocksTests.h */,
+				03AC5C1416DF9FA500D82ECD /* OCMockObjectPartialMocksTests.m */,
+				2FA28CDB493350BF1DD26DC3 /* OCMockObjectProtocolMocksTests.h */,
+				2FA286BFBD8B9D068B41E7EF /* OCMockObjectProtocolMocksTests.m */,
+				03B316241463350E0052CD09 /* OCMockObjectTests.h */,
+				03B316251463350E0052CD09 /* OCMockObjectTests.m */,
 				03B316261463350E0052CD09 /* OCMockRecorderTests.h */,
 				03B316271463350E0052CD09 /* OCMockRecorderTests.m */,
 				03B316281463350E0052CD09 /* OCObserverMockObjectTests.h */,
 				03B316291463350E0052CD09 /* OCObserverMockObjectTests.m */,
-				03B3161E1463350E0052CD09 /* NSInvocationOCMAdditionsTests.h */,
-				03B3161F1463350E0052CD09 /* NSInvocationOCMAdditionsTests.m */,
 				030EF0C814632FD000B04273 /* Supporting Files */,
-				030EF0AA14632FD000B04273 /* Frameworks */,
-				2FA286BFBD8B9D068B41E7EF /* OCMockObjectProtocolMocksTests.m */,
-				2FA28CDB493350BF1DD26DC3 /* OCMockObjectProtocolMocksTests.h */,
-				2FA28EDBF243639C57F88A1B /* OCMArgTests.m */,
-				2FA2843EE4675FC8037F0415 /* OCMArgTests.h */,
-				2FA28DEDB9163597B7C49F3D /* NSMethodSignatureOCMAdditionsTests.m */,
-				2FA28B7B2155E3ECD93F92F3 /* NSMethodSignatureOCMAdditionsTests.h */,
 			);
 			path = OCMockTests;
 			sourceTree = "<group>";
@@ -825,6 +829,7 @@
 				03B3163C1463350E0052CD09 /* OCMockObjectTests.m in Sources */,
 				03B316411463350E0052CD09 /* OCMockRecorderTests.m in Sources */,
 				03B316461463350E0052CD09 /* OCObserverMockObjectTests.m in Sources */,
+				011797401BACEFDC00E23FD1 /* OCMockObjectDynamicPropertyMockingTests.m in Sources */,
 				03AC5C1516DF9FA500D82ECD /* OCMockObjectPartialMocksTests.m in Sources */,
 				039F91C616EFB493006C3D70 /* OCMockObjectClassMethodMockingTests.m in Sources */,
 				0354D72016F23AF5001766BB /* OCMockObjectForwardingTargetTests.m in Sources */,
@@ -873,6 +878,7 @@
 				D31108C41828DBD600737925 /* OCMockObjectPartialMocksTests.m in Sources */,
 				D31108C81828DBD600737925 /* OCMockRecorderTests.m in Sources */,
 				D31108C61828DBD600737925 /* OCMockObjectForwardingTargetTests.m in Sources */,
+				011797411BACEFDC00E23FD1 /* OCMockObjectDynamicPropertyMockingTests.m in Sources */,
 				D31108CA1828DBD600737925 /* NSInvocationOCMAdditionsTests.m in Sources */,
 				D31108C31828DBD600737925 /* OCMockObjectTests.m in Sources */,
 			);

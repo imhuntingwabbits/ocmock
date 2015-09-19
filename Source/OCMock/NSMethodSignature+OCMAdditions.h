@@ -13,6 +13,8 @@
 
 @interface NSMethodSignature(OCMAdditions)
 
++ (NSMethodSignature *)signatureForDynamicPropertyMatchingSelector:(SEL)selector inClass:(Class)aClass;
+
 - (const char *)methodReturnTypeWithoutQualifiers;
 - (BOOL)usesSpecialStructureReturn;
 - (NSString *)fullTypeString;

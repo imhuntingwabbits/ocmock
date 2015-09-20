@@ -318,4 +318,25 @@ static NSUInteger initializeCallCount = 0;
     XCTAssertEqualObjects(dummyObject, newObject, @"Should have stubbed +new method");
 }
 
+- (void)testExceptionsCanBeThrownOnClassMethods
+{
+    id mock = [OCMockObject mockForClass:[TestClassWithClassMethods class]];
+    
+    NSException *ex = [NSException exceptionWithName:@"TestExceptionName"
+                                              reason:@"TestReason"
+                                            userInfo:nil];
+    [[[mock expect] andThrow:ex] foo];
+    BOOL threw = NO;
+    @try {
+        [mock foo];
+    }
+    @catch (NSException *exception) {
+        XCTAssertEqualObjects(ex, exception);
+        threw = YES;
+    }
+    @finally {
+        XCTAssertTrue(threw);
+    }
+}
+
 @end

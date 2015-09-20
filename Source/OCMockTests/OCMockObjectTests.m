@@ -888,6 +888,27 @@ static NSString *TestNotification = @"TestNotification";
 
 }
 
+- (void)testExceptionsCanBeThrownOnInstanceMethods
+{
+    mock = [OCMockObject mockForClass:[TestClassWithProperty class]];
+    
+    NSException *ex = [NSException exceptionWithName:@"TestExceptionName"
+                                              reason:@"TestReason"
+                                            userInfo:nil];
+    [[[mock expect] andThrow:ex] title];
+    BOOL threw = NO;
+    @try {
+        [mock title];
+    }
+    @catch (NSException *exception) {
+        XCTAssertEqualObjects(ex, exception);
+        threw = YES;
+    }
+    @finally {
+        XCTAssertTrue(threw);
+    }
+}
+
 
 // --------------------------------------------------------------------------------------
 //  some internal tests

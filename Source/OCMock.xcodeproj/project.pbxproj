@@ -225,10 +225,8 @@
 		030EF0A814632FD000B04273 /* OCMock.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = OCMock.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		030EF0B314632FD000B04273 /* OCMock-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "OCMock-Info.plist"; sourceTree = "<group>"; };
 		030EF0B514632FD000B04273 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		030EF0B714632FD000B04273 /* OCMock-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "OCMock-Prefix.pch"; sourceTree = "<group>"; };
 		030EF0B814632FD000B04273 /* OCMock.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OCMock.h; sourceTree = "<group>"; };
 		030EF0DC14632FF700B04273 /* libOCMock.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libOCMock.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		030EF0E114632FF700B04273 /* OCMockLib-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "OCMockLib-Prefix.pch"; sourceTree = "<group>"; };
 		033E1FF314FEF5E0004456B0 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		0354D71F16F23AF5001766BB /* OCMockObjectForwardingTargetTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OCMockObjectForwardingTargetTests.m; sourceTree = "<group>"; };
 		03565A1D18F05626003AE91E /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
@@ -399,7 +397,6 @@
 				F0B950F41B0080BE00942C38 /* Info.plist */,
 				030EF0B314632FD000B04273 /* OCMock-Info.plist */,
 				030EF0B414632FD000B04273 /* InfoPlist.strings */,
-				030EF0B714632FD000B04273 /* OCMock-Prefix.pch */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -415,7 +412,6 @@
 		030EF0E014632FF700B04273 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				030EF0E114632FF700B04273 /* OCMockLib-Prefix.pch */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -757,7 +753,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastTestingUpgradeCheck = 0510;
-				LastUpgradeCheck = 0640;
+				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = "Mulle Kybernetik";
 				TargetAttributes = {
 					03565A3018F0566E003AE91E = {
@@ -1055,14 +1051,13 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				FRAMEWORK_VERSION = A;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "OCMock/OCMock-Prefix.pch";
 				INFOPLIST_FILE = "OCMock/OCMock-Info.plist";
 				LD_DYLIB_INSTALL_NAME = "@rpath/$(EXECUTABLE_PATH)";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SYSTEM_LIBRARY_DIR)/Frameworks/Foundation.framework/Versions/C\"",
 				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.mulle-kybernetik.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = framework;
 			};
@@ -1093,6 +1088,7 @@
 				INFOPLIST_FILE = "OCMockTests/OCMockTests-Info.plist";
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.mulle-kybernetik.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = xctest;
 			};
@@ -1102,8 +1098,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				DSTROOT = /tmp/OCMockLib.dst;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "OCMockLib/OCMockLib-Prefix.pch";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				"IPHONEOS_DEPLOYMENT_TARGET[arch=arm64]" = 7.0;
 				LIBRARY_SEARCH_PATHS = (
@@ -1132,7 +1126,6 @@
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
 				);
@@ -1148,6 +1141,7 @@
 				INFOPLIST_FILE = "OCMockLibTests/OCMockLibTests-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.ocmock.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
 			};
@@ -1184,6 +1178,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.mulle-kybernetik.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = OCMock;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
@@ -1207,6 +1202,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
@@ -1269,14 +1265,13 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				FRAMEWORK_VERSION = A;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "OCMock/OCMock-Prefix.pch";
 				INFOPLIST_FILE = "OCMock/OCMock-Info.plist";
 				LD_DYLIB_INSTALL_NAME = "@rpath/$(EXECUTABLE_PATH)";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SYSTEM_LIBRARY_DIR)/Frameworks/Foundation.framework/Versions/C\"",
 				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.mulle-kybernetik.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = framework;
 			};
@@ -1289,14 +1284,13 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				FRAMEWORK_VERSION = A;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "OCMock/OCMock-Prefix.pch";
 				INFOPLIST_FILE = "OCMock/OCMock-Info.plist";
 				LD_DYLIB_INSTALL_NAME = "@rpath/$(EXECUTABLE_PATH)";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SYSTEM_LIBRARY_DIR)/Frameworks/Foundation.framework/Versions/C\"",
 				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.mulle-kybernetik.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = framework;
 			};
@@ -1306,8 +1300,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				DSTROOT = /tmp/OCMockLib.dst;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "OCMockLib/OCMockLib-Prefix.pch";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				"IPHONEOS_DEPLOYMENT_TARGET[arch=arm64]" = 7.0;
 				LIBRARY_SEARCH_PATHS = (
@@ -1328,8 +1320,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				DSTROOT = /tmp/OCMockLib.dst;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "OCMockLib/OCMockLib-Prefix.pch";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				"IPHONEOS_DEPLOYMENT_TARGET[arch=arm64]" = 7.0;
 				LIBRARY_SEARCH_PATHS = (
@@ -1372,6 +1362,7 @@
 				INFOPLIST_FILE = "OCMockTests/OCMockTests-Info.plist";
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.mulle-kybernetik.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = xctest;
 			};
@@ -1398,6 +1389,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				INFOPLIST_FILE = "OCMockTests/OCMockTests-Info.plist";
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.mulle-kybernetik.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = xctest;
 			};
@@ -1415,7 +1407,6 @@
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
 				);
@@ -1431,6 +1422,7 @@
 				INFOPLIST_FILE = "OCMockLibTests/OCMockLibTests-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.ocmock.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
 			};
@@ -1449,7 +1441,6 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				ENABLE_NS_ASSERTIONS = NO;
 				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
 				);
@@ -1461,6 +1452,7 @@
 				INFOPLIST_FILE = "OCMockLibTests/OCMockLibTests-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.ocmock.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
@@ -1498,6 +1490,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.mulle-kybernetik.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = OCMock;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
@@ -1533,6 +1526,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.mulle-kybernetik.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = OCMock;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;

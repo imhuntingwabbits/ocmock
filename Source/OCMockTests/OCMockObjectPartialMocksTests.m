@@ -255,6 +255,23 @@
 	XCTAssertEqualObjects(@"Foo", [realObject foo], @"Should have 'unstubbed' method.");
 }
 
+- (void)testAttemptingToMockANilObjectThrows {
+  NSException *expectedException = [NSException exceptionWithName:NSInvalidArgumentException
+                                                           reason:@"Attempt to create a partial mock of 'nil'"
+                                                         userInfo:nil];
+  BOOL threw = NO;
+  @try {
+    [OCMockObject partialMockForObject:nil];
+  }
+  @catch (NSException *exception) {
+    XCTAssertEqualObjects(expectedException, exception);
+    threw = YES;
+  }
+  @finally {
+    XCTAssertTrue(threw);
+  }
+}
+
 
 #pragma mark   Tests for explicit forward to real object with partial mocks
 

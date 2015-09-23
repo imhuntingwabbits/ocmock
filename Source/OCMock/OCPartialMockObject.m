@@ -63,10 +63,16 @@ static NSMutableDictionary *mockTable;
 
 - (id)initWithObject:(NSObject *)anObject
 {
-	[super initWithClass:[anObject class]];
-	realObject = [anObject retain];
-	[[self mockObjectClass] rememberPartialMock:self forObject:anObject];
-	[self setupSubclassForObject:realObject];
+  if (anObject) {
+    [super initWithClass:[anObject class]];
+    realObject = [anObject retain];
+    [[self mockObjectClass] rememberPartialMock:self forObject:anObject];
+    [self setupSubclassForObject:realObject];
+  } else {
+    @throw [NSException exceptionWithName:NSInvalidArgumentException
+                                   reason:@"Attempt to create a partial mock of `nil`"
+                                 userInfo:nil];
+  }
 	return self;
 }
 

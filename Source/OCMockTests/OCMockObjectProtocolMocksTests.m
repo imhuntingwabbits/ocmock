@@ -82,7 +82,7 @@ typedef InterfaceForTypedef* PointerTypedefInterface;
 - (void)testDoesNotRespondToInvalidProtocolSelector
 {
     id mock = [OCMockObject mockForProtocol:@protocol(TestProtocol)];
-    XCTAssertFalse([mock respondsToSelector:@selector(fooBar)]);
+    XCTAssertFalse([mock respondsToSelector:NSSelectorFromString(@"fooBar")]);
 }
 
 - (void)testWithTypedefReturnType {

@@ -5,5 +5,9 @@
 //
 
 #ifdef __OBJC__
+#if TARGET_OS_OSX
     #import <Cocoa/Cocoa.h>
+#elif TARGET_OS_IOS
+    #import <UIKit/UIKit.h>
+#endif
 #endif

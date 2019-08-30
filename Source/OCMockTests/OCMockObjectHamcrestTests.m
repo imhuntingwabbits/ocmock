@@ -18,7 +18,11 @@
 #import <OCMock/OCMock.h>
 
 #define HC_SHORTHAND
+#if TARGET_OS_OSX
 #import <OCHamcrest/OCHamcrest.h>
+#elif TARGET_OS_IOS
+#import <OCHamcrestIOS/OCHamcrestIOS.h>
+#endif
 
 
 @interface OCMockObjectHamcrestTests : XCTestCase

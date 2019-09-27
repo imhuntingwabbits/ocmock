@@ -41,7 +41,14 @@
     // This type should(!) require special returns for all architectures
     const char *types = "{CATransform3D=ffffffffffffffff}";
    	NSMethodSignature *sig = [NSMethodSignature signatureWithObjCTypes:types];
+#if TARGET_OS_OSX
     XCTAssertTrue([sig usesSpecialStructureReturn], @"Should have determined need for special (stret) return.");
+#elif TARGET_OS_IPHONE
+    //these types return different results on iOS.
+    XCTAssertFalse([sig usesSpecialStructureReturn], @"Should have determined need for special (stret) return.");
+#else
+    XCTFail(@"Update this test for your new target");
+#endif
 }
 
 - (void)testArchDependentSpecialReturns

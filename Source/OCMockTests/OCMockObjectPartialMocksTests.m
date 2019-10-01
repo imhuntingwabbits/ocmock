@@ -581,5 +581,60 @@ static NSUInteger initializeCallCount = 0;
 	XCTAssertNoThrow([foo method1], @"Should have worked.");
 }
 
+- (void)testPartialMocksOfNSFileManagerOnThreads {
+    for (int j=0; j < 1000; j++) {
+        @autoreleasepool {
+            [self _doTest];
+        }
+    }
+}
+
+- (void)_doTest {
+    NSURL *directoryURL = [NSURL fileURLWithPath:[[NSTemporaryDirectory() stringByAppendingPathComponent:@"ocmock-tests"] stringByAppendingPathComponent:@"test-dir"]];
+    NSURL *otherDirectoryURL = [NSURL fileURLWithPath:[[NSTemporaryDirectory() stringByAppendingPathComponent:@"ocmock-tests"] stringByAppendingPathComponent:@"other-dir"]];
+    NSError *fileNotFoundError = [NSError errorWithDomain:NSCocoaErrorDomain
+                                                     code:NSFileNoSuchFileError
+                                                 userInfo:nil];
+    
+    __block BOOL done = NO;
+    XCTestExpectation *noteExpectation = [self expectationWithDescription:@"Waiting for the notification stuff to finish."];
+    dispatch_async(dispatch_get_global_queue(QOS_CLASS_DEFAULT, 0), ^{
+        NSObject *object = [[NSObject alloc] init];
+        while (!done) {
+            [[NSNotificationCenter defaultCenter] removeObserver:object];
+            usleep(0.1 * USEC_PER_SEC);
+        }
+        
+        for (int i=0; i < 100; i++) {
+            [[NSNotificationCenter defaultCenter] removeObserver:object];
+        }
+        object = nil;
+        [noteExpectation fulfill];
+    });
+    
+    id partialMockDefaultManager = [OCMockObject partialMockForObject:[NSFileManager defaultManager]];
+    [[partialMockDefaultManager expect] copyItemAtURL:[OCMArg checkWithBlock:^BOOL(NSURL * _Nonnull obj) {
+        return [[obj path] isEqualToString:[directoryURL path]];
+    }]
+                                                toURL:[OCMArg isNotNil]
+                                                error:[OCMArg setTo:fileNotFoundError]];
+    
+    for (int i=0; i < 100; i++) {
+        if (i == 50) {
+            NSError *error = nil;
+            XCTAssertFalse([[NSFileManager defaultManager] copyItemAtURL:directoryURL
+                                                                   toURL:otherDirectoryURL
+                                                                   error:&error]);
+            XCTAssertEqualObjects(fileNotFoundError, error);
+        } else {
+            XCTAssertFalse([[NSFileManager defaultManager] fileExistsAtPath:directoryURL.path]);
+        }
+    }
+    
+    [partialMockDefaultManager verify]; [partialMockDefaultManager stopMocking]; partialMockDefaultManager = nil;
+    done = YES;
+    [self waitForExpectations:@[ noteExpectation ]
+                      timeout:30.0];
+}
 
 @end
